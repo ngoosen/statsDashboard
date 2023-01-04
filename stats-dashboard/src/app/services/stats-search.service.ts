@@ -8,7 +8,7 @@ export class StatsSearchService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  getMonthly(brand : string){
-    return this._httpClient.get<any>('https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/fr.wikipedia/all-access/all-agents/' + brand + '/monthly/2016010100/2016123100')
+  getMonthly(brand : string, year: number, language: string){
+    return this._httpClient.get<any>('https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/' + language +'.wikipedia/all-access/all-agents/' + brand + '/monthly/' + year + '010100/' + year + '123100')
   }
 }

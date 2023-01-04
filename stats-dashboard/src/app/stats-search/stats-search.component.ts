@@ -11,11 +11,13 @@ export class StatsSearchComponent {
   monthlyStats : MonthlyStats[] = []
   isLoading: boolean = true
   selectedBrand: string = "Apple_Inc."
+  selectedYear: number = 2016
+  selectedLanguage: string = "en"
 
   constructor(private _statsSearchService : StatsSearchService) { }
 
   searchByBrand(){
-    this._statsSearchService.getMonthly(this.selectedBrand).subscribe({
+    this._statsSearchService.getMonthly(this.selectedBrand, this.selectedYear, this.selectedLanguage).subscribe({
       next: (data) => {
         this.monthlyStats = []
 
