@@ -1,4 +1,4 @@
-<div>
+<div class="header">
   <h1>Statistiques des vues par marque et par année</h1>
   <p>Voir les statistiques mensuelles pour:</p>
   <label>Marque: </label>
@@ -32,7 +32,7 @@
   <button (click)="searchByBrand()">Rechercher</button>
 </div>
 
-<div>
+<div class="graph">
   <ngx-charts-bar-vertical *ngIf="!isLoading"
   [results]="monthlyStats"
   [xAxis]="true"
@@ -41,7 +41,8 @@
   [yAxisLabel]="'Views'"
   [showXAxisLabel]="true"
   [showYAxisLabel]="true"
-  [scheme]="'fire'"
+  [scheme]="'air'"
+  [legend]="true"
   >
   </ngx-charts-bar-vertical>
 </div>
