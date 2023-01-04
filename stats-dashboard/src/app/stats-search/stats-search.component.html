@@ -1,8 +1,26 @@
 <div>
+  <h1>Statistiques des vues de l'année 2016</h1>
   <p>Voir les statistiques mensuelles pour:</p>
-  <select name="" id="">
-    <option value="Apple">Apple</option>
-    <option value="Samsung">Samsung</option>
+  <label>Marque: </label>
+  <select [(ngModel)]="selectedBrand">
+    <option [value]="'Apple_Inc.'">Apple</option>
+    <option [value]="'Samsung'">Samsung</option>
+    <option [value]="'Xiaomi'">Xiaomi</option>
+    <option [value]="'OnePlus'">OnePlus</option>
+    <option [value]="'Motorola'">Motorola</option>
+    <option [value]="'Oppo'">Oppo</option>
   </select>
-  <button>Rechercher</button>
+  <button (click)="searchByBrand()">Rechercher</button>
+</div>
+
+<div>
+  <ngx-charts-bar-vertical *ngIf="!isLoading"
+  [results]="monthlyStats"
+  [xAxis]="true"
+  [yAxis]="true"
+  [xAxisLabel]="'Months'"
+  [yAxisLabel]="'Views'"
+  [scheme]="'fire'"
+  >
+  </ngx-charts-bar-vertical>
 </div>
