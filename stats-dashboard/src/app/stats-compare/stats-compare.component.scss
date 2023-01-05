@@ -16,18 +16,20 @@ ul {
   list-style: none;
 }
 button{
-  background-color: rgb(12, 157, 214);
   border-style: none;
   border-radius: 5px;
   padding: 10px;
-  color: white;
   cursor: pointer;
   margin-left: 50px;
-  font-weight: bold;
 }
 select{
   margin-right: 20px;
   border-style: none;
   border-radius: 5px;
   padding: 5px;
+}
+#compare{
+  background-color: rgb(12, 157, 214);
+  color: white;
+  font-weight: bolder;
 }

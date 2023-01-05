@@ -1,29 +1,36 @@
 <div class="header">
 
-  <h1>Comparer les vues entre deux ou plusieurs marques</h1>
+  <h1>Comparer les vues mensuelles entre deux ou plusieurs marques</h1>
+  <div class="select-year-language">
+    <ul>
+      <li>
+        <label>Année: </label>
+        <select [(ngModel)]="selectedYear">
+          <option [value]="2016">2016</option>
+          <option [value]="2017">2017</option>
+          <option [value]="2018">2018</option>
+          <option [value]="2019">2019</option>
+          <option [value]="2020">2020</option>
+          <option [value]="2021">2021</option>
+          <option [value]="2022">2022</option>
+        </select>
+      </li>
+      <li>
+        <label>Langue: </label>
+        <select [(ngModel)]="selectedLanguage">
+          <option [value]="'en'">Anglais</option>
+          <option [value]="'fr'">Français</option>
+          <option [value]="'de'">Allemand</option>
+          <option [value]="'nl'">Néerlandais</option>
+          <option [value]="'it'">Italien</option>
+          <option [value]="'es'">Espagnol</option>
+        </select>
+      </li>
+    </ul>
+  </div>
 
-  <label>Année: </label>
-  <select [(ngModel)]="selectedYear">
-    <option [value]="2016">2016</option>
-    <option [value]="2017">2017</option>
-    <option [value]="2018">2018</option>
-    <option [value]="2019">2019</option>
-    <option [value]="2020">2020</option>
-    <option [value]="2021">2021</option>
-    <option [value]="2022">2022</option>
-  </select>
 
-  <label>Langue: </label>
-  <select [(ngModel)]="selectedLanguage">
-    <option [value]="'en'">Anglais</option>
-    <option [value]="'fr'">Français</option>
-    <option [value]="'de'">Allemand</option>
-    <option [value]="'nl'">Néerlandais</option>
-    <option [value]="'it'">Italien</option>
-    <option [value]="'es'">Espagnol</option>
-  </select>
-
-  <div class="list">
+  <div class="brands-list">
     <ul *ngFor="let request of brandsToCompare">
       <li>
         <label>Marque: </label>
@@ -39,8 +46,8 @@
     </ul>
   </div>
 
-    <button (click)="addRequest()">+</button>
-    <button (click)="compare()">Comparer</button>
+    <button (click)="addRequest()">Ajouter une marque</button>
+    <button (click)="compare()" id="compare">Comparer</button>
 </div>
 <div>
   <ngx-charts-bar-vertical-2d *ngIf="groupedStats.length == brandsToCompare.length"
