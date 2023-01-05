@@ -1,3 +1,33 @@
 *{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.header{
+  background-color: rgb(255, 140, 73);
+  padding: 10px 50px 30px;
+  border-radius: 10px;
+}
+.header h1{
+  color: white;
+}
+ul, li{
+  display: inline-block;
+}
+ul {
+  list-style: none;
+}
+button{
+  background-color: rgb(12, 157, 214);
+  border-style: none;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  margin-left: 50px;
+  font-weight: bold;
+}
+select{
+  margin-right: 20px;
+  border-style: none;
+  border-radius: 5px;
+  padding: 5px;
+}

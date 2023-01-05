@@ -1,45 +1,47 @@
-<h1>Comparer les vues entre deux ou plusieurs marques</h1>
+<div class="header">
 
-<div>
+  <h1>Comparer les vues entre deux ou plusieurs marques</h1>
+
   <label>Année: </label>
-      <select [(ngModel)]="selectedYear">
-        <option [value]="2016">2016</option>
-        <option [value]="2017">2017</option>
-        <option [value]="2018">2018</option>
-        <option [value]="2019">2019</option>
-        <option [value]="2020">2020</option>
-        <option [value]="2021">2021</option>
-        <option [value]="2022">2022</option>
-      </select>
-      <label>Langue: </label>
-      <select [(ngModel)]="selectedLanguage">
-        <option [value]="'en'">Anglais</option>
-        <option [value]="'fr'">Français</option>
-        <option [value]="'de'">Allemand</option>
-        <option [value]="'nl'">Néerlandais</option>
-        <option [value]="'it'">Italien</option>
-        <option [value]="'es'">Espagnol</option>
-      </select>
-</div>
+  <select [(ngModel)]="selectedYear">
+    <option [value]="2016">2016</option>
+    <option [value]="2017">2017</option>
+    <option [value]="2018">2018</option>
+    <option [value]="2019">2019</option>
+    <option [value]="2020">2020</option>
+    <option [value]="2021">2021</option>
+    <option [value]="2022">2022</option>
+  </select>
 
-<div>
-  <ul *ngFor="let request of brandsToCompare">
-    <li>
-      <label>Marque: </label>
-      <select [(ngModel)]="request.brand">
-        <option [value]="'Apple_Inc.'">Apple</option>
-        <option [value]="'Samsung'">Samsung</option>
-        <option [value]="'Xiaomi'">Xiaomi</option>
-        <option [value]="'OnePlus'">OnePlus</option>
-        <option [value]="'Motorola'">Motorola</option>
-        <option [value]="'Oppo'">Oppo</option>
-      </select>
-    </li>
-  </ul>
-  <button (click)="addRequest()">+</button>
-  <button (click)="compare()">Comparer</button>
-</div>
+  <label>Langue: </label>
+  <select [(ngModel)]="selectedLanguage">
+    <option [value]="'en'">Anglais</option>
+    <option [value]="'fr'">Français</option>
+    <option [value]="'de'">Allemand</option>
+    <option [value]="'nl'">Néerlandais</option>
+    <option [value]="'it'">Italien</option>
+    <option [value]="'es'">Espagnol</option>
+  </select>
 
+  <div class="list">
+    <ul *ngFor="let request of brandsToCompare">
+      <li>
+        <label>Marque: </label>
+        <select [(ngModel)]="request.brand">
+          <option [value]="'Apple_Inc.'">Apple</option>
+          <option [value]="'Samsung'">Samsung</option>
+          <option [value]="'Xiaomi'">Xiaomi</option>
+          <option [value]="'OnePlus'">OnePlus</option>
+          <option [value]="'Motorola'">Motorola</option>
+          <option [value]="'Oppo'">Oppo</option>
+        </select>
+      </li>
+    </ul>
+  </div>
+
+    <button (click)="addRequest()">+</button>
+    <button (click)="compare()">Comparer</button>
+</div>
 <div>
   <ngx-charts-bar-vertical-2d *ngIf="groupedStats.length == brandsToCompare.length"
   [results]="groupedStats"
@@ -49,7 +51,7 @@
   [showGridLines]="true"
   [showXAxisLabel]="true"
   [showYAxisLabel]="true"
-  [xAxisLabel]="'Month'"
+  [xAxisLabel]="'Brands'"
   [yAxisLabel]="'Views'"
   [scheme]="'air'"
   >
