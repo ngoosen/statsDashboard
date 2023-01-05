@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { StatsSearchService } from '../services/stats-search.service';
-import { MonthlyStats } from '../stats-search/stats-search.component';
+import { GroupedMonthlyStats, StatsSearchService } from '../services/stats-search.service';
 
 @Component({
   selector: 'app-stats-compare',
@@ -9,9 +8,14 @@ import { MonthlyStats } from '../stats-search/stats-search.component';
 })
 export class StatsCompareComponent {
 
-  brandsToCompare: Brand[] = [{brand: "Apple_Inc."}, {brand: "Samsung"}, {brand: "Xiaomi"}]
+  brandsToCompare: Brand[] = [{brand: "Apple_Inc."}, {brand: "Samsung"}]
   selectedYear: number = 2016
   selectedLanguage: string = "en"
+  groupedStats: GroupedMonthlyStats[] = []
+  isLoading: boolean = true
+  get MonthlyStats(){
+    return this._statsSearchService.monthlyStats
+  }
 
   constructor(private _statsSearchService : StatsSearchService) {}
 
@@ -25,15 +29,10 @@ export class StatsCompareComponent {
   }
   compare(){
     for(let brand of this.brandsToCompare){
-      let monthlyStats : MonthlyStats[] = []
-      this._statsSearchService.getMonthly(brand.brand, this.selectedYear, this.selectedLanguage).subscribe({
-        next: (data) => {
-          for(let item of data.items){
-            monthlyStats.push({name: brand.brand, value: item.views})
-          }
-        }
-      })
+      this._statsSearchService.getMonthly(brand.brand, this.selectedYear, this.selectedLanguage)
+      this.groupedStats.push({name: brand.brand, series: this.MonthlyStats})
     }
+    this.isLoading = false
   }
 }
 export interface Brand{

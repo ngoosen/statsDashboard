@@ -39,3 +39,16 @@
   <button (click)="addRequest()">+</button>
   <button (click)="compare()">Comparer</button>
 </div>
+
+<div>
+  <ngx-charts-bar-vertical-2d *ngIf="groupedStats.length == brandsToCompare.length"
+  [results]="groupedStats"
+  [legend]="true"
+  [showGridLines]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  [xAxisLabel]="'Month'"
+  [yAxisLabel]="'Views'"
+  >
+  </ngx-charts-bar-vertical-2d>
+</div>
