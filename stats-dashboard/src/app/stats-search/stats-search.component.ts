@@ -11,7 +11,6 @@ export class StatsSearchComponent {
   get Stats(): MonthlyStats[]{
     return this._statsSearchService.monthlyStats
   }
-
   isLoading: boolean = true
   selectedBrand: string = "Apple_Inc."
   selectedYear: number = 2016
@@ -20,7 +19,14 @@ export class StatsSearchComponent {
   constructor(private _statsSearchService : StatsSearchService) { }
 
   searchByBrand(){
-    this._statsSearchService.getMonthly(this.selectedBrand, this.selectedYear, this.selectedLanguage)
-    this.isLoading = false
+    this._statsSearchService.getMonthly(this.selectedBrand, this.selectedYear, this.selectedLanguage).subscribe({
+      next: (data) => {
+        this._statsSearchService.formatMonthlyData(data)
+        this.isLoading = false
+      },
+      error: (err) => {
+        console.log("boom" + err);
+      }
+    })
   }
 }

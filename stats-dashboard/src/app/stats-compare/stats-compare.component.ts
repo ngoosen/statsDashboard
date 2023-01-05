@@ -28,9 +28,18 @@ export class StatsCompareComponent {
     }
   }
   compare(){
+    this.groupedStats = []
+
     for(let brand of this.brandsToCompare){
-      this._statsSearchService.getMonthly(brand.brand, this.selectedYear, this.selectedLanguage)
-      this.groupedStats.push({name: brand.brand, series: this.MonthlyStats})
+      this._statsSearchService.getMonthly(brand.brand, this.selectedYear, this.selectedLanguage).subscribe({
+        next : (data) => {
+          this._statsSearchService.formatMonthlyData(data)
+          this.groupedStats.push({name : brand.brand, series: this.MonthlyStats})
+        },
+        error : (err) => {
+          console.log("boom" + err);
+        }
+      })
     }
     this.isLoading = false
   }

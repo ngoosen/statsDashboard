@@ -44,11 +44,14 @@
   <ngx-charts-bar-vertical-2d *ngIf="groupedStats.length == brandsToCompare.length"
   [results]="groupedStats"
   [legend]="true"
+  [xAxis]="true"
+  [yAxis]="true"
   [showGridLines]="true"
   [showXAxisLabel]="true"
   [showYAxisLabel]="true"
   [xAxisLabel]="'Month'"
   [yAxisLabel]="'Views'"
+  [scheme]="'air'"
   >
   </ngx-charts-bar-vertical-2d>
 </div>

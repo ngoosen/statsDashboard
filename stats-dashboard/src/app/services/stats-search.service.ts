@@ -5,15 +5,17 @@ import { HttpClient } from '@angular/common/http'
   providedIn: 'root'
 })
 export class StatsSearchService {
-  
+
   monthlyStats : MonthlyStats[] = []
 
   constructor(private _httpClient: HttpClient) { }
 
   getMonthly(brand : string, year: number, language: string){
-    this._httpClient.get<any>('https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/' + language +'.wikipedia/all-access/all-agents/' + brand + '/monthly/' + year + '010100/' + year + '123100').subscribe({
-      next: (data) => {
-        this.monthlyStats = []
+    return this._httpClient.get<any>('https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/' + language +'.wikipedia/all-access/all-agents/' + brand + '/monthly/' + year + '010100/' + year + '123100')
+  }
+
+  formatMonthlyData(data: any){
+    this.monthlyStats = []
 
         for(let item of data.items){
 
@@ -64,11 +66,6 @@ export class StatsSearchService {
             value: item.views
           })
         }
-      },
-      error: (err) => {
-        console.log("boom " + err);
-      }
-    })
   }
 }
 
