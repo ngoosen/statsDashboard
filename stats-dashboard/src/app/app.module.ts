@@ -9,12 +9,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StatsSearchComponent } from './stats-search/stats-search.component';
 import { StatsCompareComponent } from './stats-compare/stats-compare.component';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StatsSearchComponent,
-    StatsCompareComponent
+    StatsCompareComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

@@ -16,6 +16,7 @@ export class StatsCompareComponent {
   get MonthlyStats(){
     return this._statsSearchService.monthlyStats
   }
+  alertSent: boolean = false
 
   constructor(private _statsSearchService : StatsSearchService) {}
 
@@ -24,7 +25,10 @@ export class StatsCompareComponent {
       this.brandsToCompare.push({brand: "Apple_Inc."})
     }
     else{
-      console.log("Trop de requêtes!"); // créer un toast pour dire stop
+      this.alertSent = true
+      setTimeout(() => {
+        this.alertSent = false
+      }, 3000)
     }
   }
   compare(){
