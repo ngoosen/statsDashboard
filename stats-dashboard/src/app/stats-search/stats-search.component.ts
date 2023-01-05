@@ -24,7 +24,7 @@ export class StatsSearchComponent {
         for(let item of data.items){
 
           let monthName = ""
-          switch ((item.timestamp[4] + item.timestamp[5])) {
+          switch (item.timestamp[4] + item.timestamp[5]) {
             case "01":
               monthName = "January"
               break;

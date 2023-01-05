@@ -8,11 +8,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StatsSearchComponent } from './stats-search/stats-search.component';
+import { StatsCompareComponent } from './stats-compare/stats-compare.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StatsSearchComponent
+    StatsSearchComponent,
+    StatsCompareComponent
   ],
   imports: [
     BrowserModule,
