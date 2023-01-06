@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class StatsSearchService {
 
   monthlyStats : MonthlyStats[] = []
 
-  constructor(private _httpClient: HttpClient) { }
+  constructor(private _httpClient: HttpClient, private _router: Router) { }
 
   getMonthly(brand : string, year: number, language: string){
     return this._httpClient.get<any>('https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/' + language +'.wikipedia/all-access/all-agents/' + brand + '/monthly/' + year + '010100/' + year + '123100')
@@ -67,6 +68,10 @@ export class StatsSearchService {
           })
         }
   }
+
+  passParamsInURL(params: Search){
+    this._router.navigate(['/'], {queryParams: {brand: params.brand, year: params.year, language: params.language}})
+  }
 }
 
 export interface MonthlyStats{
@@ -76,4 +81,9 @@ export interface MonthlyStats{
 export interface GroupedMonthlyStats{
   name: string, // brand
   series: MonthlyStats[]
+}
+export interface Search{
+  brand: string,
+  year: number,
+  language: string
 }

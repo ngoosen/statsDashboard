@@ -30,11 +30,11 @@
     <option [value]="'es'">Espagnol</option>
   </select>
   <button (click)="searchByBrand()">Rechercher</button>
-  <button routerLink="/compare">Comparer</button>
+  <button routerLink="/compare" id="compare">Comparer</button>
 </div>
 
 <div class="graph">
-  <ngx-charts-bar-vertical *ngIf="!isLoading"
+  <ngx-charts-bar-vertical *ngIf="Stats.length>0"
   [results]="Stats"
   [xAxis]="true"
   [yAxis]="true"

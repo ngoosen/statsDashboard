@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { StatsSearchComponent } from './stats-search/stats-search.component';
 import { StatsCompareComponent } from './stats-compare/stats-compare.component';
 import { AlertComponent } from './alert/alert.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StatsSearchComponent,
     StatsCompareComponent,
-    AlertComponent
+    AlertComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

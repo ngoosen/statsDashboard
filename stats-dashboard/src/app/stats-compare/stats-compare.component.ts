@@ -12,7 +12,6 @@ export class StatsCompareComponent {
   selectedYear: number = 2016
   selectedLanguage: string = "en"
   groupedStats: GroupedMonthlyStats[] = []
-  isLoading: boolean = true
   get MonthlyStats(){
     return this._statsSearchService.monthlyStats
   }
@@ -45,7 +44,6 @@ export class StatsCompareComponent {
         }
       })
     }
-    this.isLoading = false
   }
 }
 export interface Brand{
